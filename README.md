@@ -11,7 +11,7 @@ docker build -t dkori/multi-worker ./worker
 docker login
 
 ###### For Push 
-docker push dkori/multi-client 
-docker push dkori/multi-ngnix 
-docker push dkori/multi-server 
-docker push dkori/multi-worker
+1. docker push dkori/multi-client
+2. docker push dkori/multi-ngnix 
+3. docker push dkori/multi-server 
+4. docker push dkori/multi-worker
