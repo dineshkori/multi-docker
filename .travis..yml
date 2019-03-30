@@ -2,14 +2,14 @@ sudo: required
 services:
   - docker
 
-  before_install:
+before_install:
   - docker build -t dkori/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run dkori/react-test npm run test -- --coverage
+  - docker run dkori/react-test npm test -- --coverage
 
-after_sucess:
+after_success:
   - docker build -t dkori/multi-client ./client
-  - docker build -t dkori/multi-ngnix ./ngnix
+  - docker build -t dkori/multi-nginx ./nginx
   - docker build -t dkori/multi-server ./server
   - docker build -t dkori/multi-worker ./worker
