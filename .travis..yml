@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker 
+
+before_install:
+  - docker build -t dkori/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run dkori/react-test npm run test -- --coverage
+
+after_sucess:
+  - docker build -t dkori/multi-client ./client
+  - docker build -t dkori/multi-ngnix ./ngnix
+  - docker build -t dkori/multi-server ./server
+  - docker build -t dkori/multi-worker ./worker
