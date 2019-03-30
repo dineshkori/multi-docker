@@ -2,6 +2,10 @@ sudo: required
 services:
   - docker 
 
+matrix:
+  exclude:
+  - rvm: 1.9.3
+
 before_install:
   - docker build -t dkori/react-test -f ./client/Dockerfile.dev ./client
 
